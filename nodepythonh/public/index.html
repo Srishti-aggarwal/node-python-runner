@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Run Python Code</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#run-button').click(function() {
+				$.ajax({
+					url: '/run',
+					method: 'POST',
+					success: function(response) {
+						$('#output').text(response);
+					},
+					error: function(xhr) {
+						alert(xhr.responseText);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Run Python Code</h1>
+	<button id="run-button">Run</button>
+	<br>
+	<h1><pre id="output"></pre></h1>
+</body>
+</html>
